@@ -33,7 +33,7 @@ export default function HistoryPage({ limit }: { limit?: number }) {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/history');
+                const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/history');
                 if (!response.ok) {
                     throw new Error('Failed to fetch history');
                 }
