@@ -1,5 +1,5 @@
 'use client'; // Add this at the very top
-import { ArrowRight, BarChart3, TrendingUp, BrainCircuit, Zap, Shield, Rocket, TrendingUpIcon, BadgeCheck, Globe, LayoutDashboard, Star, PlayCircle } from 'lucide-react';
+import { ArrowRight, TrendingUp, BrainCircuit, Zap, Shield, Rocket, TrendingUpIcon, BadgeCheck, Globe, Star, PlayCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component
 
@@ -54,7 +54,7 @@ export default function LandingPage() {
                             Stop Burning Cash on Products{" "}
                         </span>
                         <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                            That Won't Sell
+                            That Won&apos;t Sell
                         </span>
                     </h1>
 
@@ -113,12 +113,12 @@ export default function LandingPage() {
                             {
                                 icon: <BrainCircuit className="w-8 h-8 text-blue-600" />,
                                 title: "AI-Powered Product Validation",
-                                description: "Our neural networks analyze thousands of data points to predict your product's success probability with 89% accuracy."
+                                description: "Our neural networks analyze thousands of data points to predict your product&apos;s success probability with 89% accuracy."
                             },
                             {
                                 icon: <TrendingUp className="w-8 h-8 text-purple-600" />,
                                 title: "Competitor Ad Intelligence",
-                                description: "See exactly which ads your competitors are running and how much they're spending to dominate the market."
+                                description: "See exactly which ads your competitors are running and how much they&apos;re spending to dominate the market."
                             },
                             {
                                 icon: <Shield className="w-8 h-8 text-green-600" />,
@@ -169,7 +169,7 @@ export default function LandingPage() {
                             <span className="text-blue-600">3 Simple Steps</span> To Smarter Product Launches
                         </h2>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Stop wasting money on products that won't sell. Our AI does the heavy lifting.
+                            Stop wasting money on products that won&apos;t sell. Our AI does the heavy lifting.
                         </p>
                     </div>
 
@@ -216,7 +216,7 @@ export default function LandingPage() {
                         From <span className="text-blue-600">$0 to $10k+</span> With One Product
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Don't take our word for it. Here's what our users say:
+                        Don&apos;t take our word for it. Here&apos;s what our users say:
                     </p>
                 </div>
 
@@ -247,7 +247,7 @@ export default function LandingPage() {
                                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                                 ))}
                             </div>
-                            <blockquote className="text-lg italic text-gray-700 mb-6">"{testimonial.quote}"</blockquote>
+                            <blockquote className="text-lg italic text-gray-700 mb-6">&apos;{testimonial.quote}&apos;</blockquote>
                             <div className="flex items-center">
                                 <div className="w-12 h-12 bg-blue-100 rounded-full mr-4"></div>
                                 <div>

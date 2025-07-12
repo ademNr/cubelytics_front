@@ -14,7 +14,7 @@ export default function HelpPage() {
                     <HelpCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-gray-900 mb-2">Help resources coming soon</h3>
                     <p className="text-gray-500 max-w-md mx-auto">
-                        We're preparing comprehensive help documentation and FAQs to assist you with using Cubelytics effectively.
+                        We&apos;re preparing comprehensive help documentation and FAQs to assist you with using Cubelytics effectively.
                     </p>
                 </div>
             </Card>

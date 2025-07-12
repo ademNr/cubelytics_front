@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image'; // Add this import
 import {
     BarChart3, Target, Calendar, Settings, HelpCircle,
-    X, ChevronDown, ChevronUp
+    X
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -15,9 +15,7 @@ export default function Sidebar({
     isOpen: boolean;
     currentPath: string;
 }) {
-    const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-        analytics: true
-    });
+
 
     const navigation = [
         {

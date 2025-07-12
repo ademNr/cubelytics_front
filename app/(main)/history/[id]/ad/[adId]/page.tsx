@@ -48,8 +48,8 @@ export default function AdDetailPage() {
         image,
         videoSrc,
         poster,
-        productName = 'Unknown Product',
-        date = new Date().toISOString().split('T')[0]
+
+
     } = adData;
 
     return (

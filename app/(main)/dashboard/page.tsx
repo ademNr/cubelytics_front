@@ -129,7 +129,7 @@ export default function DashboardPage() {
                         {error}
                     </div>
                 )}
-                <p className="text-gray-600">Analyze your product's market potential with AI-powered market insights</p>
+                <p className="text-gray-600">Analyze your product&apos;s market potential with AI-powered market insights</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

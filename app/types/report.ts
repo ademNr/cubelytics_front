@@ -15,8 +15,7 @@ export type CostEstimates = {
     CACProjection: CACProjection[];
 };
 
-// Define similar interfaces for all response sections
-// ...
+
 
 export type AnalysisReport = {
     aiSummaryVerdict: string;
@@ -24,8 +23,8 @@ export type AnalysisReport = {
         platformBreakdown: PlatformBreakdown;
     };
     costEstimates: CostEstimates;
-    productTrendInsights: { /* ... */ };
-    // ... other sections
+    productTrendInsights: { };
+  
     adPreviews: {
         adPreviewText: string;
         videoSrc?: string;

@@ -52,12 +52,7 @@ export const AdPreviews = ({
                         >
                             <div
                                 className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                                onClick={(e) => {
-                                    // Prevent navigation if video is being interacted with
-                                    // if (e.target.closest('video') || e.target.closest('.video-control')) {
-                                    //     e.preventDefault();
-                                    // }
-                                }}
+
                             >
                                 {/* Video Preview */}
                                 {ad.videoSrc && (

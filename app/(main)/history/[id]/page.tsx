@@ -1,8 +1,7 @@
 "use client";
 
 import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { ReportHeader } from '@/components/report/ReportHeader';
+
 import { ReportSummary } from '@/components/report/ReportSummary';
 import { AdPreviews } from '@/components/report/AdPreviews';
 import { SearchDemand } from '@/components/report/SearchDemand';
@@ -11,7 +10,7 @@ import { useParams } from 'next/navigation';
 
 // Import all your section components
 import { InfluencerSaturation } from '@/components/report/sections/InfluencerSaturation';
-import { CostEstimates } from '@/components/report/sections/CostEstimates';
+
 import { ProductTrendInsights } from '@/components/report/sections/ProductTrendInsights';
 import { MarketSaturation } from '@/components/report/sections/MarketSaturation';
 import { AudienceProfile } from '@/components/report/sections/AudienceProfile';
@@ -27,14 +26,14 @@ interface ReportData {
     productName: string;
     date: string;
     aiAnalysis: any;
-    adsData: any[];
+    adsData: [];
     // Add other fields as needed
 }
 
 export default function ProductReportPage() {
 
     const { id } = useParams();
-    const [reportData, setReportData] = useState<any>(null);
+    const [reportData, setReportData] = useState<ReportData>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 

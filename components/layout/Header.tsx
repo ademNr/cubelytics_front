@@ -1,7 +1,7 @@
 "use client";
 
 import {
-    Search, Bell, User, Menu
+    Bell, User, Menu
 } from 'lucide-react';
 
 export default function Header({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void }) {
