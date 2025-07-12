@@ -26,7 +26,7 @@ const getBadgeVariant = (status: string): 'default' | 'success' | 'warning' | 'd
     return 'default';
 };
 
-export default function HistoryPage({ limit }: { limit?: number }) {
+export function HistoryPage({ limit }: { limit?: number }) {
     const [scans, setScans] = useState<Scan[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');

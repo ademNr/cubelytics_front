@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Target, Globe, Eye, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
-import HistoryPage from '../history/page';
+import { HistoryPage } from '@/app/(main)/history/page';
 
 interface Metric {
     title: string;
