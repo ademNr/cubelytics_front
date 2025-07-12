@@ -25,7 +25,7 @@ export default function DashboardPage() {
     useEffect(() => {
         const fetchDashboardMetrics = async () => {
             try {
-                const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/dashboard-metrics');
+                const response = await fetch('https://cubelytics-backend-lzji.vercel.app/api/dashboard-metrics');
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -102,7 +102,7 @@ export default function DashboardPage() {
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/history');
+                const response = await fetch('https://cubelytics-backend-lzji.vercel.app/api/history');
                 if (!response.ok) {
                     throw new Error('Failed to fetch history');
                 }

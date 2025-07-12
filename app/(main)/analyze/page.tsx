@@ -29,7 +29,7 @@ export default function AnalyzePage() {
         setError('');
 
         try {
-            const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/analyze', {
+            const response = await fetch('https://cubelytics-backend-lzji.vercel.app/api/analyze', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
