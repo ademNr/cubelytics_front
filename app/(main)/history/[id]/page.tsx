@@ -68,14 +68,29 @@ export default function ProductReportPage() {
     }, [id]);
 
     if (loading) {
-        return <LoadingSpinner />;
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="text-center">
+                    <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin mx-auto"></div>
+                    <p className="mt-4 text-gray-600">Generating your product analysis report...</p>
+                    <p className="text-sm text-gray-500 mt-2">This may take a few moments</p>
+                </div>
+            </div>
+        );
     }
 
     if (error) {
         return (
-            <div className="p-6">
-                <div className="bg-red-50 text-red-600 p-4 rounded-lg">
-                    {error}
+            <div className="min-h-screen flex items-center justify-center p-6">
+                <div className="max-w-md w-full bg-red-50 text-red-600 p-8 rounded-lg shadow-sm text-center">
+                    <h2 className="text-xl font-bold mb-3">Error Loading Report</h2>
+                    <p className="mb-4">{error}</p>
+                    <button
+                        className="px-4 py-2 bg-white border border-red-200 rounded-md text-red-600 hover:bg-red-100"
+                        onClick={() => window.location.reload()}
+                    >
+                        Try Again
+                    </button>
                 </div>
             </div>
         );
@@ -83,16 +98,18 @@ export default function ProductReportPage() {
 
     if (!reportData) {
         return (
-            <div className="p-6">
-                <div className="bg-yellow-50 text-yellow-600 p-4 rounded-lg">
-                    No report data available
+            <div className="min-h-screen flex items-center justify-center p-6">
+                <div className="max-w-md w-full bg-yellow-50 text-yellow-700 p-8 rounded-lg shadow-sm text-center">
+                    <h2 className="text-xl font-bold mb-3">Report Not Available</h2>
+                    <p>We couldn't find any data for this product analysis.</p>
+                    <p className="mt-2 text-sm">Please try analyzing the product again.</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 p-4 md:p-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-800">Product Viability Report</h1>
