@@ -1,30 +1,5 @@
 import { Card } from "../../ui/Card";
-
-interface KPI {
-    metric: string;
-    target: string;
-    timeframe: string;
-}
-
-interface BudgetAllocation {
-    [key: string]: string;
-    legalConsultation: string;
-    paidAds: string;
-    contentCreation: string;
-    influencerMarketing: string;
-}
-
-interface BudgetSuggestion {
-    totalLaunchBudget: string;
-    allocation: BudgetAllocation;
-}
-
-interface ActionPlanData {
-    timeToMarket: string;
-    immediateSteps: string[];
-    budgetSuggestion: BudgetSuggestion;
-    kpis: KPI[];
-}
+import { ActionPlan as ActionPlanData } from "@/types/report";
 
 interface ActionPlanProps {
     data: ActionPlanData;

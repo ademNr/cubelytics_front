@@ -1,17 +1,9 @@
 import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
-
-interface KeywordData {
-    keyword: string;
-    searchVolume: string;
-    lastMonthSearches: string;
-    difficulty: 'High' | 'Medium' | 'Low';
-}
+import { SearchDemand as SearchDemandData } from "@/types/report";
 
 interface SearchDemandProps {
-    data: {
-        topKeywords: KeywordData[];
-    };
+    data: SearchDemandData;
 }
 
 export const SearchDemand = ({ data }: SearchDemandProps) => (
