@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const InfluencerSaturation = ({ data }: { data: any }) => {
+import { InfluencerSaturation as InfluencerSaturatioData } from "@/types/report";
+export const InfluencerSaturation = ({ data }: { data: InfluencerSaturatioData }) => {
     const platforms = Object.entries(data.platformBreakdown);
 
     return (

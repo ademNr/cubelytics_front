@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/Card";
 import Link from 'next/link';
+import { Report, AdData } from '@/types/report';
+
+interface AdPreviewsProps {
+    ads: AdData[];
+    reportId: string;
+    reportData: {
+        productName: string;
+        date: string;
+    };
+}
 
 export const AdPreviews = ({
     ads,
     reportId,
     reportData
-}: {
-    ads: any[];
-    reportId: string;
-    reportData: any;
-}) => {
+}: AdPreviewsProps) => {
     const [playingVideoIndex, setPlayingVideoIndex] = useState<number | null>(null);
     const [isMuted, setIsMuted] = useState(true);
+
     // Function to encode ad data for URL
-    const encodeAdData = (ad: any) => {
+    const encodeAdData = (ad: AdData) => {
         return encodeURIComponent(JSON.stringify({
             ...ad,
             reportId,
@@ -22,6 +29,7 @@ export const AdPreviews = ({
             date: reportData.date
         }));
     };
+
     // Stop all videos when component unmounts
     useEffect(() => {
         return () => {
@@ -52,7 +60,6 @@ export const AdPreviews = ({
                         >
                             <div
                                 className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-
                             >
                                 {/* Video Preview */}
                                 {ad.videoSrc && (
@@ -164,7 +171,7 @@ export const AdPreviews = ({
                             {isMuted ? (
                                 <>
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m0 0l-2-2m2 2l-2 2" />
                                 </>
                             ) : (
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072M12 6a9 9 0 010 12m-4.5-9.5L12 3l4.5 4.5M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />

@@ -1,7 +1,36 @@
 import { Card } from "../../ui/Card";
 
+interface KPI {
+    metric: string;
+    target: string;
+    timeframe: string;
+}
 
-export const ActionPlan = ({ data }: { data: any }) => (
+interface BudgetAllocation {
+    [key: string]: string;
+    legalConsultation: string;
+    paidAds: string;
+    contentCreation: string;
+    influencerMarketing: string;
+}
+
+interface BudgetSuggestion {
+    totalLaunchBudget: string;
+    allocation: BudgetAllocation;
+}
+
+interface ActionPlanData {
+    timeToMarket: string;
+    immediateSteps: string[];
+    budgetSuggestion: BudgetSuggestion;
+    kpis: KPI[];
+}
+
+interface ActionPlanProps {
+    data: ActionPlanData;
+}
+
+export const ActionPlan = ({ data }: ActionPlanProps) => (
     <Card title="Action Plan">
         <div className="space-y-6">
             <div>
@@ -12,7 +41,7 @@ export const ActionPlan = ({ data }: { data: any }) => (
             <div>
                 <h3 className="text-sm font-medium text-gray-700">Immediate Steps</h3>
                 <ul className="mt-2 space-y-2">
-                    {data.immediateSteps.map((step: string, i: number) => (
+                    {data.immediateSteps.map((step, i) => (
                         <li key={i} className="flex items-start">
                             <span className="flex-shrink-0 mt-1.5 h-2 w-2 rounded-full bg-blue-500"></span>
                             <span className="ml-2 text-gray-800">{step}</span>
@@ -25,12 +54,12 @@ export const ActionPlan = ({ data }: { data: any }) => (
                 <h3 className="text-sm font-medium text-gray-700">Budget Suggestion</h3>
                 <div className="mt-2 p-4 bg-gray-50 rounded-lg">
                     <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700" >Total Budget:</span>
+                        <span className="font-medium text-gray-700">Total Budget:</span>
                         <span className="font-bold text-lg text-gray-900">{data.budgetSuggestion.totalLaunchBudget}</span>
                     </div>
 
                     <div className="mt-4 space-y-3">
-                        {Object.entries(data.budgetSuggestion.allocation).map(([category, percentage]: [string, any]) => (
+                        {Object.entries(data.budgetSuggestion.allocation).map(([category, percentage]) => (
                             <div key={category}>
                                 <div className="flex justify-between text-sm">
                                     <span className="capitalize text-gray-700">{category}:</span>
@@ -60,7 +89,7 @@ export const ActionPlan = ({ data }: { data: any }) => (
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                            {data.kpis.map((kpi: any, i: number) => (
+                            {data.kpis.map((kpi, i) => (
                                 <tr key={i}>
                                     <td className="px-4 py-3 whitespace-nowrap font-medium text-gray-900">{kpi.metric}</td>
                                     <td className="px-4 py-3 whitespace-nowrap text-gray-800">{kpi.target}</td>

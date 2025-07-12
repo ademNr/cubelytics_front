@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const PlatformStrategies = ({ data }: { data: any }) => (
+import { PlatformStrategies as PlatformStrategiesData } from "@/types/report"
+export const PlatformStrategies = ({ data }: { data: PlatformStrategiesData }) => (
     <Card title="Platform Strategies">
         <div className="space-y-4">
             <div>

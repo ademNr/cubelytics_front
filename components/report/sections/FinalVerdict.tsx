@@ -1,6 +1,6 @@
 import { Badge } from "../../ui/Badge";
-
-export const FinalVerdict = ({ data }: { data: any }) => (
+import { FinalVerdict as FinalVerdicData } from "@/types/report";
+export const FinalVerdict = ({ data }: { data: FinalVerdicData }) => (
     <div className="space-y-4">
         <div className="flex items-center gap-3">
             <h3 className="text-lg font-semibold text-gray-800">Launch Decision:</h3>

@@ -6,7 +6,7 @@ import {
     BarChart3, Target, Calendar, Settings, HelpCircle,
     X
 } from 'lucide-react';
-import { useState } from 'react';
+
 
 export default function Sidebar({
     isOpen,

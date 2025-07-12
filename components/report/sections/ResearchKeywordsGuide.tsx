@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const ResearchKeywordsGuide = ({ data }: { data: any }) => {
+import { ResearchKeywordsGuide as ResearchKeywordsGuideData } from "@/types/report"
+export const ResearchKeywordsGuide = ({ data }: { data: ResearchKeywordsGuideData }) => {
     const platforms = Object.entries(data);
 
     return (

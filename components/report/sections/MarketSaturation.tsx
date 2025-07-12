@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const MarketSaturation = ({ data }: { data: any }) => (
+import { MarketSaturation as MarketSaturationData } from "@/types/report"
+export const MarketSaturation = ({ data }: { data: MarketSaturationData }) => (
     <Card title="Market Saturation">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

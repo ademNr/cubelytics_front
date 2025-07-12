@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const ProductTrendInsights = ({ data }: { data: any }) => (
+import { ProductTrendInsights as ProductTrendInsightsData } from "@/types/report"
+export const ProductTrendInsights = ({ data }: { data: ProductTrendInsightsData }) => (
     <Card title="Product Trend Insights">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>

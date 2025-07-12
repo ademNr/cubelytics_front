@@ -1,7 +1,20 @@
 import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
 
-export const SearchDemand = ({ data }: { data: any }) => (
+interface KeywordData {
+    keyword: string;
+    searchVolume: string;
+    lastMonthSearches: string;
+    difficulty: 'High' | 'Medium' | 'Low';
+}
+
+interface SearchDemandProps {
+    data: {
+        topKeywords: KeywordData[];
+    };
+}
+
+export const SearchDemand = ({ data }: SearchDemandProps) => (
     <Card title="Search Demand">
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -14,7 +27,7 @@ export const SearchDemand = ({ data }: { data: any }) => (
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                    {data.topKeywords.map((keyword: any, i: number) => (
+                    {data.topKeywords.map((keyword, i) => (
                         <tr key={i}>
                             <td className="px-4 py-3 whitespace-nowrap font-medium text-gray-900">{keyword.keyword}</td>
                             <td className="px-4 py-3 whitespace-nowrap text-gray-700">{keyword.searchVolume}</td>
