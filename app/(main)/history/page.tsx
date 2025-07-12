@@ -26,10 +26,13 @@ const getBadgeVariant = (status: string): 'default' | 'success' | 'warning' | 'd
     return 'default';
 };
 
-export function HistoryPage({ limit }: { limit?: number }) {
+// Remove the props parameter since pages in App Router don't receive props this way
+export function HistoryPage() {
     const [scans, setScans] = useState<Scan[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    // If you need a limit, manage it with state or search params
+    const [limit, setLimit] = useState<number | undefined>(undefined);
 
     useEffect(() => {
         const fetchHistory = async () => {
@@ -52,7 +55,6 @@ export function HistoryPage({ limit }: { limit?: number }) {
     }, []);
 
     const displayedScans = limit ? scans.slice(0, limit) : scans;
-
     if (loading) {
         return (
             <div className="p-6">
