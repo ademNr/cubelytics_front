@@ -1,7 +1,7 @@
 import { Card } from "../../ui/Card";
 import { Badge } from "../../ui/Badge";
-
-export const PricePositioning = ({ data }: { data: any }) => (
+import { PricePositioning as PricePositioningData } from "@/types/report"
+export const PricePositioning = ({ data }: { data: PricePositioningData }) => (
     <Card title="Price Positioning">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

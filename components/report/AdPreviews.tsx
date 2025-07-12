@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/Card";
 import Link from 'next/link';
-import { Report, AdData } from '@/types/report';
+import { AdData } from '@/types/report';
 
 interface AdPreviewsProps {
     ads: AdData[];
