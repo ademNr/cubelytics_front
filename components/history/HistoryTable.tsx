@@ -4,15 +4,9 @@ import { FolderSearch, Loader2 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from "@/components/ui/Badge";
 import Link from 'next/link';
+import { Scan } from '@/types/scan'; // Import the Scan interface
 
-interface Scan {
-    id: string;
-    product: string;
-    country: string;
-    date: string;
-    status: string;
-    confidence: string;
-}
+
 
 const getBadgeVariant = (status: string): 'default' | 'success' | 'warning' | 'danger' => {
     const statusUpper = status.toUpperCase();

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { HistoryTable } from '@/components/history/HistoryTable';
+import { Scan } from '@/types/scan'; // Import the Scan interface
 
 export default function HistoryPage() {
-    const [scans, setScans] = useState<any[]>([]);
+    const [scans, setScans] = useState<Scan[]>([]); // Use Scan interface
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
     useEffect(() => {
         const fetchHistory = async () => {
             try {

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Target, Globe, Eye, Zap, Loader2 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { HistoryTable } from '@/components/history/HistoryTable';
+import { Scan } from '@/types/scan'; // Import the Scan interface
 
 interface Metric {
     title: string;
@@ -14,7 +15,7 @@ interface Metric {
 
 export default function DashboardPage() {
     const [metrics, setMetrics] = useState<Metric[]>([]);
-    const [scans, setScans] = useState<any[]>([]);
+    const [scans, setScans] = useState<Scan[]>([]); // Use Scan interface
     const [scansLoading, setScansLoading] = useState(true);
     const [scansError, setScansError] = useState<string | null>(null);
     const [metricsLoading, setMetricsLoading] = useState(true);
