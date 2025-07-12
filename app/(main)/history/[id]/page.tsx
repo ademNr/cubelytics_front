@@ -20,16 +20,10 @@ import { ResearchKeywordsGuide } from '@/components/report/sections/ResearchKeyw
 import { ActionPlan } from '@/components/report/sections/ActionPlan';
 import { FinalVerdict } from '@/components/report/sections/FinalVerdict';
 import LoadingSpinner from '@/components/LoadingSpinner';
-
+import { Report } from '@/types/report';
 interface ReportData {
-    id: string;
-    productName: string;
-    date: string;
-    aiAnalysis: any;
-    adsData: [];
-    // Add other fields as needed
+    data: Report;
 }
-
 export default function ProductReportPage() {
 
     const { id } = useParams();
@@ -95,9 +89,9 @@ export default function ProductReportPage() {
                 <div>
                     <h1 className="text-2xl font-bold text-gray-800">Product Viability Report</h1>
                     <div className="flex flex-wrap items-center gap-3 mt-1 text-sm text-gray-600">
-                        <span>Product: {reportData.productName}</span>
+                        <span>Product: {reportData.data.input.productTitle}</span>
                         <span className="hidden md:inline">•</span>
-                        <span>Date: {reportData.date}</span>
+
 
 
                     </div>
@@ -108,35 +102,35 @@ export default function ProductReportPage() {
             </div>
 
             <ReportSummary
-                verdict={reportData.aiAnalysis?.aiSummaryVerdict || "No summary available"}
-                confidence={reportData.aiAnalysis?.finalVerdict?.confidenceLevel || "Unknown"}
+                verdict={reportData.data.aiAnalysis?.aiSummaryVerdict || "No summary available"}
+                confidence={reportData.data.aiAnalysis?.finalVerdict?.confidenceLevel || "Unknown"}
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
                 {/* Main Content Column */}
                 <div className="lg:col-span-2 space-y-6">
                     <div className="space-y-6">
-                        <InfluencerSaturation data={reportData.aiAnalysis?.influencerSaturation} />
+                        <InfluencerSaturation data={reportData.data.aiAnalysis?.influencerSaturation} />
                         {/*  <CostEstimates data={reportData.aiAnalysis?.costEstimates} /> */}
-                        <ProductTrendInsights data={reportData.aiAnalysis?.productTrendInsights} />
-                        <SearchDemand data={reportData.aiAnalysis?.searchDemand} />
-                        <MarketSaturation data={reportData.aiAnalysis?.marketSaturation} />
-                        <AudienceProfile data={reportData.aiAnalysis?.audienceProfile} />
-                        <PricePositioning data={reportData.aiAnalysis?.pricePositioning} />
-                        <PlatformStrategies data={reportData.aiAnalysis?.platformStrategies} />
-                        <ResearchKeywordsGuide data={reportData.aiAnalysis?.researchKeywordsGuide} />
-                        <ActionPlan data={reportData.aiAnalysis?.actionPlan} />
+                        <ProductTrendInsights data={reportData.data.aiAnalysis?.productTrendInsights} />
+                        <SearchDemand data={reportData.data.aiAnalysis?.searchDemand} />
+                        <MarketSaturation data={reportData.data.aiAnalysis?.marketSaturation} />
+                        <AudienceProfile data={reportData.data.aiAnalysis?.audienceProfile} />
+                        <PricePositioning data={reportData.data.aiAnalysis?.pricePositioning} />
+                        <PlatformStrategies data={reportData.data.aiAnalysis?.platformStrategies} />
+                        <ResearchKeywordsGuide data={reportData.data.aiAnalysis?.researchKeywordsGuide} />
+                        <ActionPlan data={reportData.data.aiAnalysis?.actionPlan} />
                     </div>
                 </div>
 
                 {/* Sidebar Column */}
                 <div className="space-y-6 ">
                     <Card title="Final Verdict">
-                        <FinalVerdict data={reportData.aiAnalysis?.finalVerdict} />
+                        <FinalVerdict data={reportData.data.aiAnalysis?.finalVerdict} />
                     </Card>
                     <AdPreviews
 
-                        ads={reportData.adsData}
+                        ads={reportData.data.adsData}
                         reportId={id as string}
                         reportData={reportData}
                     />
