@@ -31,13 +31,32 @@ export default function ProductReportPage() {
             try {
                 const response = await fetch(`https://cubelytics-backend-lzji.vercel.app/api/history/${id}`);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch report');
+                    // Try to get error details from response
+                    const errorData = await response.json().catch(() => null);
+                    throw new Error(errorData?.error || `HTTP error! status: ${response.status}`);
                 }
-                const data = await response.json();
-                setReportData(data.data); // Assuming the response has a data property containing the Report
+                const data: Report = await response.json();
+
+                // Normalize the data to match our frontend interface
+                const normalizedData: Report = {
+                    ...data,
+                    // Map backend fields to our interface
+                    input: {
+                        productTitle: data.productTitle || data.input?.productTitle || "",
+                        targetCountry: data.targetCountry || data.input?.targetCountry || "",
+                        keywords: data.keywords ? data.keywords.join(',') : (data.input?.keywords || ""),
+                        imageUrl: data.imageUrl || data.input?.imageUrl || ""
+                    }
+                };
+
+                setReportData(normalizedData);
             } catch (err) {
                 console.error('Error fetching report:', err);
-                setError('Failed to load report data');
+                let errorMessage = 'Failed to load report data';
+                if (err instanceof Error) {
+                    errorMessage = err.message;
+                }
+                setError(errorMessage);
             } finally {
                 setLoading(false);
             }
@@ -118,7 +137,7 @@ export default function ProductReportPage() {
                         reportId={id as string}
                         reportData={{
                             productName: reportData.input.productTitle,
-                            date: new Date().toISOString() // You might want to add a date field to your Report type
+                            date: reportData.createdAt || new Date().toISOString()
                         }}
                     />
                 </div>

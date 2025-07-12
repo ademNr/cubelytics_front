@@ -178,4 +178,9 @@ export interface Report {
     input: InputData;
     adsData: AdData[];
     aiAnalysis: AiAnalysis;
+    createdAt: string;  // Add this field
+    productTitle?: string; // Optional field from backend
+    targetCountry?: string; // Optional field from backend
+    keywords?: string[]; // Optional field from backend
+    imageUrl?: string; // Optional field from backend
 }
