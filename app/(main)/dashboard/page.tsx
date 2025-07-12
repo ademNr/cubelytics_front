@@ -1,8 +1,9 @@
-"use client"
+"use client";
+
 import { useState, useEffect } from 'react';
-import { Target, Globe, Eye, Zap } from 'lucide-react';
+import { Target, Globe, Eye, Zap, Loader2 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
-import { HistoryPage } from '@/app/(main)/history/page';
+import { HistoryTable } from '@/components/history/HistoryTable';
 
 interface Metric {
     title: string;
@@ -13,14 +14,17 @@ interface Metric {
 
 export default function DashboardPage() {
     const [metrics, setMetrics] = useState<Metric[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [scans, setScans] = useState<any[]>([]);
+    const [scansLoading, setScansLoading] = useState(true);
+    const [scansError, setScansError] = useState<string | null>(null);
+    const [metricsLoading, setMetricsLoading] = useState(true);
+    const [metricsError, setMetricsError] = useState<string | null>(null);
 
+    // Fetch metrics
     useEffect(() => {
         const fetchDashboardMetrics = async () => {
             try {
                 const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/dashboard-metrics');
-                console.log(response.text);
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -28,7 +32,6 @@ export default function DashboardPage() {
 
                 const data = await response.json();
 
-                // Validate and transform API data
                 setMetrics([
                     {
                         title: "Products Analyzed",
@@ -59,8 +62,7 @@ export default function DashboardPage() {
                 ]);
             } catch (err) {
                 console.error('Failed to fetch metrics:', err);
-                setError('Failed to load live data. Showing sample metrics.');
-                // Fallback to your original static data
+                setMetricsError('Failed to load live data. Showing sample metrics.');
                 setMetrics([
                     {
                         title: "Products Analyzed",
@@ -88,14 +90,35 @@ export default function DashboardPage() {
                     }
                 ]);
             } finally {
-                setLoading(false);
+                setMetricsLoading(false);
             }
         };
 
         fetchDashboardMetrics();
     }, []);
 
-    if (loading) {
+    // Fetch history for the dashboard
+    useEffect(() => {
+        const fetchHistory = async () => {
+            try {
+                const response = await fetch('https://cubelytics-backend-lzji-gpjtnmayb-ademnrdevgmailcoms-projects.vercel.app/api/history');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch history');
+                }
+                const data = await response.json();
+                setScans(data);
+            } catch (err) {
+                console.error('Failed to fetch history:', err);
+                setScansError('Failed to load history data');
+            } finally {
+                setScansLoading(false);
+            }
+        };
+
+        fetchHistory();
+    }, []);
+
+    if (metricsLoading) {
         return (
             <div className="p-6">
                 <div className="mb-6">
@@ -115,7 +138,15 @@ export default function DashboardPage() {
                         </Card>
                     ))}
                 </div>
-                <HistoryPage limit={5} />
+                <div className="mb-6">
+                    <h2 className="text-xl font-bold text-gray-800 mb-2">Recent Analyses</h2>
+                    <Card className="bg-white">
+                        <div className="p-12 text-center">
+                            <Loader2 className="w-8 h-8 text-gray-400 mx-auto mb-4 animate-spin" />
+                            <p className="text-gray-500">Loading recent analyses...</p>
+                        </div>
+                    </Card>
+                </div>
             </div>
         );
     }
@@ -124,9 +155,9 @@ export default function DashboardPage() {
         <div className="p-6">
             <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Dashboard</h2>
-                {error && (
+                {metricsError && (
                     <div className="mb-4 p-3 bg-yellow-100 text-yellow-800 rounded">
-                        {error}
+                        {metricsError}
                     </div>
                 )}
                 <p className="text-gray-600">Analyze your product&apos;s market potential with AI-powered market insights</p>
@@ -145,7 +176,16 @@ export default function DashboardPage() {
                     </Card>
                 ))}
             </div>
-            <HistoryPage limit={5} />
+
+            <div className="mb-6">
+                <h2 className="text-xl font-bold text-gray-800 mb-2">Recent Analyses</h2>
+                <HistoryTable
+                    scans={scans}
+                    loading={scansLoading}
+                    error={scansError || ''}
+                    limit={5}
+                />
+            </div>
         </div>
     );
 }
