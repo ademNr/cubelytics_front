@@ -17,7 +17,7 @@ import { PlatformStrategies } from '@/components/report/sections/PlatformStrateg
 import { ResearchKeywordsGuide } from '@/components/report/sections/ResearchKeywordsGuide';
 import { ActionPlan } from '@/components/report/sections/ActionPlan';
 import { FinalVerdict } from '@/components/report/sections/FinalVerdict';
-import LoadingSpinner from '@/components/LoadingSpinner';
+
 import { Report } from '@/types/report';
 
 export default function ProductReportPage() {
@@ -101,7 +101,7 @@ export default function ProductReportPage() {
             <div className="min-h-screen flex items-center justify-center p-6">
                 <div className="max-w-md w-full bg-yellow-50 text-yellow-700 p-8 rounded-lg shadow-sm text-center">
                     <h2 className="text-xl font-bold mb-3">Report Not Available</h2>
-                    <p>We couldn't find any data for this product analysis.</p>
+                    <p>We couldn&apos;t find any data for this product analysis.</p>
                     <p className="mt-2 text-sm">Please try analyzing the product again.</p>
                 </div>
             </div>
