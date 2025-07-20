@@ -1,24 +1,25 @@
 # Cubelytics
     
-    > Unlock Market Insights with AI-Powered Product Analysis.
+    > Unlock Market Insights with AI-Powered Product Analysis
     
-    ![Status](https://img.shields.io/badge/Status-Frontend-blue) ![Language](https://img.shields.io/badge/Language-TypeScript-blue) ![Framework](https://img.shields.io/badge/Framework-Next.js-black)
+    ![Language](https://img.shields.io/badge/Language-TypeScript-blue) ![Framework](https://img.shields.io/badge/Framework-Next.js-black) ![Styling](https://img.shields.io/badge/Styling-Tailwind CSS-cyan)
     
     ## 📝 Description
-    AI-powered product market analysis tool.
+    An AI-powered frontend application for comprehensive product market analysis, allowing users to analyze products, view historical reports, and gain market insights.
     
     ## ✨ Features
-    - AI-powered comprehensive product market analysis reports.
-- Detailed insights on product trends, market saturation, audience profiles, and pricing.
-- Analysis of ad creatives and search demand.
-- Historical tracking and review of all product analysis reports.
-- Dashboard displaying key metrics like products analyzed, markets covered, and ads monitored.
-- User-friendly interface for submitting product details for analysis.
+    - AI-powered Product Market Analysis: Submit product details (title, country, keywords, image URL) for in-depth market reports.
+- Comprehensive Market Reports: Generate detailed reports covering product trends, market saturation, audience profiles, pricing, and platform strategies.
+- Ad Creative Analysis: View and analyze specific ad creatives (images/videos, text, calls to action) found during market scans.
+- Historical Analysis Tracking: Access and review all past product analysis reports with a dedicated history table.
+- Dashboard Overview: Get quick insights into key metrics like products analyzed, markets covered, and ads monitored.
+- Actionable Insights & Verdicts: Receive clear recommendations and final verdicts on product viability and launch strategies.
+- Responsive User Interface: Built with Next.js and Tailwind CSS for a modern and adaptable user experience.
     
     ## 🛠️ Tech Stack
-    - Next.js
+    - TypeScript
+- Next.js
 - React
-- TypeScript
 - Tailwind CSS
 - Lucide React
 - Vercel
@@ -26,52 +27,61 @@
     ## ⚙️ Installation
     ### Requirements
     - Node.js (LTS recommended)
-- npm or yarn
+- npm or Yarn
     
     ### Steps
     Clone the repository: `git clone https://github.com/ademNr/cubelytics_front.git`
 Navigate to the project directory: `cd cubelytics_front`
-Install dependencies: `npm install` (or `yarn install`)
-Run the development server: `npm run dev` (or `yarn dev`)
-Open your browser to `http://localhost:3000`
+Install dependencies: `npm install` or `yarn install`
+Start the development server: `npm run dev` or `yarn dev`
+Access the application at `http://localhost:3000` (default Next.js port).
+Note: This frontend requires a running backend service. The provided code uses a hardcoded Vercel backend URL (`https://cubelytics-backend-lzji.vercel.app`).
     
     ## 🚀 Usage
     ### Basic
-    After launching the application, navigate to the 'Analyze Product' page. Fill in the product title, target country, relevant keywords, and an optional example image URL. Submit the form to initiate an AI-powered market analysis. You will be redirected to the detailed report upon completion.
+    After starting the application, navigate to the 'Analyze Product' section. Fill in the product title, target country, relevant keywords, and an example image URL. Click 'Analyze Product' to generate a comprehensive report.
     
     ### Advanced
-    Explore the 'Dashboard' to view overall statistics and key metrics. Visit the 'Analysis History' section to review all your past reports. Each report provides in-depth insights, including ad previews, search demand, market saturation, and an action plan. You can click on individual ads within a report for a detailed view of their creative.
+    Once a report is generated, you will be redirected to its dedicated page. Explore various sections like 'Product Trend Insights', 'Market Saturation', and 'Ad Previews'. Click on individual ad previews to view detailed ad creative analysis. All your past analyses can be reviewed in the 'History' section.
     
     ## 🌐 API Reference
     
-    ### `POST https://cubelytics-backend-lzji.vercel.app/api/analyze`
-    Initiates a new product market analysis by sending product details to the backend.
+    ### `POST /api/analyze`
+    Submits product details to the backend for market analysis.
     
     **Parameters:**
     - `productTitle` (string) [required]: Title of the product to analyze.
-- `targetCountry` (string) [required]: Target country for market analysis.
+- `targetCountry` (string) [required]: The target market country for the product.
 - `keywords` (string) [required]: Comma-separated keywords related to the product.
-- `imageUrl` (string): URL of an example product image.
+- `imageUrl` (string) [required]: URL of an example product image.
     
     **Example:**
     ```bash
-    fetch('https://cubelytics-backend-lzji.vercel.app/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ productTitle: 'Wireless Bluetooth Headphones', targetCountry: 'USA', keywords: 'headphones, wireless, audio', imageUrl: 'https://example.com/image.jpg' }) })
+    curl -X POST \
+  https://cubelytics-backend-lzji.vercel.app/api/analyze \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "productTitle": "Wireless Bluetooth Headphones",
+    "targetCountry": "USA",
+    "keywords": "bluetooth headphones, noise cancelling, over-ear",
+    "imageUrl": "https://example.com/headphone.jpg"
+  }'
     ```
     
 
-    ### `GET https://cubelytics-backend-lzji.vercel.app/api/dashboard-metrics`
-    Fetches aggregated metrics for the dashboard, such as products analyzed, markets covered, and ads monitored.
+    ### `GET /api/dashboard-metrics`
+    Fetches aggregate metrics for the dashboard (e.g., products analyzed, markets covered, ads monitored).
     
     **Parameters:**
     
     
     **Example:**
     ```bash
-    fetch('https://cubelytics-backend-lzji.vercel.app/api/dashboard-metrics')
+    curl https://cubelytics-backend-lzji.vercel.app/api/dashboard-metrics
     ```
     
 
-    ### `GET https://cubelytics-backend-lzji.vercel.app/api/history`
+    ### `GET /api/history`
     Retrieves a list of all past product analysis reports.
     
     **Parameters:**
@@ -79,41 +89,56 @@ Open your browser to `http://localhost:3000`
     
     **Example:**
     ```bash
-    fetch('https://cubelytics-backend-lzji.vercel.app/api/history')
+    curl https://cubelytics-backend-lzji.vercel.app/api/history
     ```
     
 
-    ### `GET https://cubelytics-backend-lzji.vercel.app/api/history/{id}`
-    Fetches a specific detailed product analysis report by its ID.
+    ### `GET /api/history/{id}`
+    Fetches a specific detailed product analysis report by its unique ID.
     
     **Parameters:**
-    - `id` (string) [required]: The unique ID of the analysis report.
+    - `id` (string) [required]: The unique identifier of the analysis report.
     
     **Example:**
     ```bash
-    fetch('https://cubelytics-backend-lzji.vercel.app/api/history/654321')
+    curl https://cubelytics-backend-lzji.vercel.app/api/history/report_id_123
     ```
     
     
     ## 📂 File Structure
-    - `app/`: Next.js application directory containing pages, layouts, and client-side components.
-- `components/`: Reusable React components for UI elements, layout, history tables, and report sections.
-- `public/`: Static assets like images (e.g., application logo).
-- `types/`: TypeScript type definitions for data structures like `Scan` and `Report`.
-- `lib/`: Utility functions and helper modules.
+    - `app/`: Next.js App Router root directory.
+- `app/(main)/`: Grouped routes for the main application pages (dashboard, analyze, history, settings, help).
+- `app/(main)/analyze/page.tsx`: Frontend page for submitting product analysis requests.
+- `app/(main)/dashboard/page.tsx`: Dashboard page displaying key metrics and recent analysis history.
+- `app/(main)/history/`: Contains pages related to analysis history.
+- `app/(main)/history/page.tsx`: Page listing all past product analysis reports.
+- `app/(main)/history/[id]/page.tsx`: Dynamic page displaying a detailed product analysis report.
+- `app/(main)/history/[id]/ad/[adId]/page.tsx`: Dynamic page for viewing detailed information about a specific ad creative.
+- `app/(main)/layout.tsx`: Main application layout including sidebar and header.
+- `app/landing/`: Contains pages specific to the application's landing page.
+- `app/landing/page.tsx`: The main landing page of the application.
+- `app/layout.tsx`: Root HTML layout for the Next.js application, including metadata.
+- `app/lib/`: Directory for utility functions and helper modules.
+- `components/`: Reusable React components used throughout the application.
+- `components/ui/`: Generic UI components (e.g., Card, Badge) built with Tailwind CSS.
+- `components/history/HistoryTable.tsx`: Component for displaying a table of analysis history.
+- `components/layout/`: Components related to the application's layout (e.g., Header, Sidebar).
+- `components/report/`: Components specifically designed for displaying sections of product analysis reports.
+- `public/`: Static assets directory (e.g., images).
+- `types/`: TypeScript type definitions for data structures like Scan and Report.
     
     ## 🤝 Contributing
     ### Setup
-    Contribution guidelines are not yet defined. Please contact the repository owner for development setup instructions.
+    Not specified in the provided code.
     
     ### Guidelines
-    Code style guidelines are not explicitly defined. Please follow standard TypeScript and React best practices.
+    Not specified in the provided code.
     
     ### Process
-    The pull request process is not yet defined. Please open an issue to discuss any proposed changes before submitting a pull request.
+    Not specified in the provided code.
     
     ## 📜 License
-    This project is licensed under the Proprietary License.
+    This project is licensed under the Not specified License.
     
     ## 👤 Author
-    The Cubelytics Team
+    Not specified
